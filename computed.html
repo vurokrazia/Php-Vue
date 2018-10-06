@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed</title>
+    <style>
+        .femenino{
+            color: pink;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+        .masculino{
+            color: blue;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <main id='app'>
+        <h1 :style="estilos">Escribe tu edad</h1>
+        <h1 :class="genero">{{nombreFull}}</h1>
+        <div v-html="rangoEdadH"></div>
+        <input type="number" v-model="edad">
+        <p>{{ rangoEdad }}</p>
+        <input type="radio" v-model="gen" value="f">Femanino
+        <input type="radio" v-model="gen" value="m">Masculino
+        <input type="text" @keyup.enter="saludo(dato)" v-model="dato" >
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                edad:0,
+                nombre:"Jesus",
+                apellidoP:"Martínez",
+                apellidoM:"Henández",
+                gen:"f",
+                dato:""
+            },
+            methods:{
+                saludo: function(dato){
+                    alert(dato);
+                }
+            },
+            computed:{
+                nombreFull: function(){
+                    return this.nombre + " " + this.apellidoP + " " + this.apellidoM;
+                },
+                rangoEdad: function (){
+                    return this.edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+                },
+                rangoEdadH: function (){
+                    return this.edad >= 18 ? "<h1>Eres mayor de edad</h1>" : "<h1>Eres menor de edad</h1>";
+                },
+                genero: function(){
+                    return this.gen == "f" ? "femenino" : "masculino";
+                },
+                estilos: function(){
+                    return this.gen == "f" ? "color:red;" : "color:purple;";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

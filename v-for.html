@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+       <ul>
+           <ol v-for="dato in datos">
+               {{dato.id}} - {{dato.valor}}
+            </ol>
+       </ul> 
+       <br>
+       <select name="" id="">
+           <option v-for="dato in datos" :value="dato.id">{{dato.valor}}</option>
+       </select>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                datos:[
+                    {valor:"Uvas",id:1},
+                    {valor:"Uvas 2",id:2},
+                    {valor:"Uvas 3",id:3}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
