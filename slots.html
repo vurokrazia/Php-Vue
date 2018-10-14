@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slots</title>
+</head>
+<body>
+    <main id='app'>
+        <mi-encabezado>
+            <h4 slot="sub">
+                Subtitulo
+            </h4>
+            <p slot="parrafo">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente totam dolorem numquam fuga, fugit, nulla quis, dolor natus cum nobis accusantium. Molestiae, laudantium earum. Nobis minus repellat quis enim earum!</p>
+        </mi-encabezado>
+    </main>
+    <template id="miTemplate">
+        <div>
+            <h1>Soy el titulodel articulo</h1>
+            <slot name="sub"></slot>
+            <slot name="parrafo"></slot>
+        </div>
+    </template>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        Vue.component(
+            'mi-encabezado',{
+            template:'#miTemplate'
+        })
+        const app = new Vue({
+            el: '#app',
+            data:{
+                
+            }
+        });
+    </script>
+</body>
+</html>
